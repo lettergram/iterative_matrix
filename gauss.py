@@ -4,8 +4,9 @@ from scipy.linalg import solve
 def gauss(A, b, x, n):
 
     L = np.tril(A)
+    U = A - L
     for i in range(n):
-        x = x + np.dot(np.linalg.inv(L), b - np.dot(A, x))
+        x = np.dot(np.linalg.inv(L), b - np.dot(U, x))
         print str(i).zfill(3),
         print(x)
     return x
@@ -26,4 +27,3 @@ print(x)
 print("Act "),
 print solve(A, b)
 print("\n")
-
